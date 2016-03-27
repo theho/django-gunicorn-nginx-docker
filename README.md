@@ -13,6 +13,13 @@ Tested With:
 ### OS X Instructions
 
 1. Start new machine - `docker-machine create -d virtualbox dev;`
-1. Build images - `docker-compose build`
-1. Start services - `docker-compose up -d`
-1. Grab IP - `docker-machine ip dev` - and view in your browser
+2. Build images - `docker-compose build`
+3. Start services - `docker-compose up -d`
+4. Grab IP - `docker-machine ip dev` - and view in your browser
+
+### EC2 Instructions
+1. `docker-machine create --driver amazonec2 --amazonec2-region eu-central-1 prod`
+2. `eval "$(docker-machine env prod)"`
+3. `docker-compose --file docker-compose.prod.yml build`
+4. `docker-compose --file docker-compose.prod.yml up -d`
+5. `docker-machine ip prod`
