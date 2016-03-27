@@ -1,0 +1,21 @@
+web:
+  restart: always
+  build: ./web
+  expose:
+    - "8000"
+  env_file: .env
+  volumes:
+    - /usr/django/app
+    - /usr/django/app/static
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes_from:
+    - web
+  volumes:
+    - /usr/django/app/static
+  links:
+    - web:web
