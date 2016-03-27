@@ -1,1 +1,4 @@
 # Extra required packages here
+
+psycopg2
+django-environ>=0.4.0

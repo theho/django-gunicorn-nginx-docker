@@ -3,13 +3,10 @@ web:
   build: ./web
   expose:
     - "8000"
-  env_file: dev.env
+  env_file: prod.env
   volumes:
     - /usr/django/app
     - /usr/django/app/static
-
-  links:
-    - postgres:postgres
 
 nginx:
   restart: always
@@ -22,19 +19,3 @@ nginx:
     - /usr/django/app/static
   links:
     - web:web
-
-
-postgres:
-  restart: always
-  image: postgres:latest
-  volumes_from:
-    - data
-  ports:
-    - "5432:5432"
-
-data:
-  restart: always
-  image: postgres:latest
-  volumes:
-    - /var/lib/postgresql
-  command: "true"
